@@ -1,0 +1,14 @@
+{
+    "mappings": [
+        {
+            "request": {
+                "method": "POST",
+                "url": "/store/1/information"
+            },
+            "response": {
+                "status": 200,
+                "jsonBody": { "key": "value" }
+            }
+        }
+    ]
+}

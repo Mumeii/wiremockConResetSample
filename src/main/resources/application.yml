@@ -1,0 +1,35 @@
+api:
+  parse-client-body-on-error: false
+  retry:
+    maxAttempts: 2
+    backoffInMilliSecond: 100
+
+# actuator :
+management:
+  endpoints:
+    web:
+      exposure:
+        # Enable to expose metrics in a prometheus compatible format
+        # In order to fetch metrics in a locally running Prometheus
+        include: prometheus,health,info,metrics,caches
+
+# tomcat server configuration
+server:
+  tomcat:
+    threads:
+      max: 2000
+    max-connections: 12000
+    mbeanregistry:
+      # enable having extra tomcat metrics exposed to Actuator & Prometheus
+      enabled: true
+
+---
+
+# add a virtual thread feature flipping profile :
+spring:
+  config:
+    activate:
+      on-profile: USE-VTHREADS
+  threads:
+    virtual:
+      enabled: true
